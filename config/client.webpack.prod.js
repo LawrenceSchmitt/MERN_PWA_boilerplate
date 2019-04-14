@@ -40,7 +40,7 @@ module.exports = {
       inject: true,
     }),
     new AppManifestWebpackPlugin({
-      logo: "./assets/favicon-512.png",
+      logo: Paths.Logo,
       statsFilename: "iconstats.json",
       persistentCache: false,
       output: "./",
