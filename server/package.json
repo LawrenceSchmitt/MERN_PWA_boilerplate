@@ -1,0 +1,23 @@
+{
+  "name": "mern_boilerplate_server",
+  "version": "0.0.1",
+  "description": "server side of Mern_boilerplate with webpack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vindao (Vincent Schmitt)",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "express-http-to-https": "^1.1.4",
+    "fs": "0.0.1-security"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.17.0",
+    "@types/cors": "^2.8.4",
+    "@types/express": "^4.16.1"
+  }
+}
