@@ -20,13 +20,14 @@ module.exports = {
       {
         test: /\.(gif|png|jpe?g|svg|webp)$/i,
         use: [
-          "file-loader",
+          {
+            loader: "file-loader",
+            options: {
+              name: "static/media/[name].[hash:8].[ext]",
+            },
+          },
           {
             loader: "image-webpack-loader",
-            options: {
-              bypassOnDebug: true, // webpack@1.x
-              disable: true, // webpack@2.x and newer
-            },
           },
         ],
       },

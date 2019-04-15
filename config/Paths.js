@@ -12,5 +12,4 @@ module.exports = {
   dist: DistDir,
   clientDist: path.join(DistDir, "client/"),
   HTMLTemplate: path.join(PublicDir, "index.html"),
-  Logo: path.join(PublicDir, "assets", "Logo.png"),
 };

@@ -72,7 +72,6 @@ if (process.env.NODE_ENV === "production") {
       orderPreference: ["br", "gz"],
     })
   );
-  // app.use(express.static("client"));
   //   app.get("/sw.js", (req, res) => {
   //     res.sendFile(path.resolve(__dirname, "client/", "sw.js"));
   //   });

@@ -5,15 +5,14 @@ import * as Img from "react-image";
 
 // assets
 const BackgroundImage = require("./assets/IMG_6711.jpg");
-const BackgroundWebp = require("./assets/laptop.webp");
 
 export interface HomeProps {}
 
 const Home: React.SFC<HomeProps> = () => {
   return (
     <div id="Home">
-      <Img src={[BackgroundWebp, BackgroundImage]} alt="Test Image" />
-      <Link to="/test">Test</Link> Testing
+      <Img src={[BackgroundImage]} alt="Test Image" />
+      <Link to="/test">Test</Link> This is a test page
     </div>
   );
 };

@@ -1,10 +1,12 @@
 const Paths = require("../../config/Paths");
 const ImageminPlugin = require("imagemin-webpack-plugin").default;
+const ImageminWebpWebpackPlugin = require("imagemin-webp-webpack-plugin");
 const WebpackCleanupPlugin = require("webpack-cleanup-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const BrotliPlugin = require("brotli-webpack-plugin");
 const AppManifestWebpackPlugin = require("app-manifest-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
+const WorkboxPlugin = require("workbox-webpack-plugin");
 
 module.exports = {
   entry: Paths.client,
@@ -21,42 +23,27 @@ module.exports = {
       {
         test: /\.(gif|png|jpe?g|svg|webp)$/i,
         use: [
-          "file-loader",
+          {
+            loader: "file-loader",
+            options: {
+              name: "static/media/[name].[hash:8].[ext]",
+            },
+          },
           {
             loader: "image-webpack-loader",
-            options: {
-              bypassOnDebug: true, // webpack@1.x
-              disable: true, // webpack@2.x and newer
-            },
           },
         ],
       },
     ],
   },
+  mode: "production",
   plugins: [
     new WebpackCleanupPlugin(),
     new HtmlWebpackPlugin({
       template: Paths.HTMLTemplate,
       inject: true,
     }),
-    new AppManifestWebpackPlugin({
-      logo: Paths.Logo,
-      statsFilename: "iconstats.json",
-      persistentCache: false,
-      output: "./",
-      config: {
-        appName: "Vindao Webpack App",
-        appDiscription:
-          "This is a boilerplate for a MERN application, please change this text in the client.webpack.prod.js file within the app directory. You can find all possible configs at https://www.npmjs.com/package/app-manifest-webpack-plugin",
-        developerName: "put your name here, or leave it out",
-      },
-    }),
-    new ImageminPlugin({
-      disable: false,
-      pngquant: {
-        quality: "95-100",
-      },
-    }),
+
     new CompressionPlugin({
       filename: "[path].gz[query]",
       algorithm: "gzip",
@@ -70,7 +57,43 @@ module.exports = {
       threshold: 10240,
       minRatio: 0.7,
     }),
-  ],
+    new ImageminPlugin({
+      disable: false,
+      mozjpeg: {
+        progressive: true,
+        quality: 65,
+      },
+      optipng: {
+        enabled: true,
+      },
+      pngquant: {
+        quality: "65-90",
+        speed: 4,
+      },
+      gifsicle: {
+        interlaced: false,
+      },
+      webp: {
+        quality: 75,
+      },
+    }),
+    new ImageminWebpWebpackPlugin(),
+    new WorkboxPlugin.GenerateSW({
+      clientsClaim: true,
+      skipWaiting: true,
+    }),
 
-  mode: "production",
+    // new AppManifestWebpackPlugin({
+    //   logo: Paths.Logo,
+    //   statsFilename: "iconstats.json",
+    //   persistentCache: false,
+    //   output: "./",
+    //   config: {
+    //     appName: "Vindao Webpack App",
+    //     appDiscription:
+    //       "This is a boilerplate for a MERN application, please change this text in the client.webpack.prod.js file within the app directory. You can find all possible configs at https://www.npmjs.com/package/app-manifest-webpack-plugin",
+    //     developerName: "put your name here, or leave it out",
+    //   },
+    // }),
+  ],
 };
