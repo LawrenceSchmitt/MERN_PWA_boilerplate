@@ -1,19 +1,17 @@
-const Paths = require("./Paths");
+const Paths = require("../../config/Paths");
+
 module.exports = {
   entry: Paths.server,
   output: {
     filename: "server.bundle.js",
     path: Paths.dist,
+    publicPath: Paths.dist,
   },
-  devtool: "source-map",
   resolve: {
     extensions: [".ts", ".js", ".json"],
   },
   module: {
-    rules: [
-      { test: /\.ts$/, loader: "ts-loader" },
-      { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
-    ],
+    rules: [{ test: /\.ts$/, exclude: /node_modules/, loader: "ts-loader" }],
   },
   mode: "production",
   target: "node",

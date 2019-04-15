@@ -1,4 +1,4 @@
-const Paths = require("./Paths");
+const Paths = require("../../config/Paths");
 
 const webpack = require("webpack");
 const NodemonPlugin = require("nodemon-webpack-plugin");

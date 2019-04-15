@@ -1,4 +1,4 @@
-const Paths = require("./Paths");
+const Paths = require("../../config/Paths");
 const BrowserSyncPlugin = require("browser-sync-webpack-plugin");
 const WebpackCleanupPlugin = require("webpack-cleanup-plugin");
 var HtmlWebpackPlugin = require("html-webpack-plugin");

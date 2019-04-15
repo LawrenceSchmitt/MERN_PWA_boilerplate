@@ -10,8 +10,10 @@ body-parser
 
 */
 
-import * as express from "express";
-import * as cors from "cors";
+import express from "express";
+import cors from "cors";
+// @ts-ignore
+import expressStaticGzip from "express-static-gzip";
 import { json, urlencoded } from "body-parser";
 import * as path from "path";
 import { redirectToHTTPS } from "express-http-to-https";
@@ -64,7 +66,13 @@ app.use(redirectToHTTPS(ignoreHosts, ignoreRoutes));
 // Serve static assets if in production
 if (process.env.NODE_ENV === "production") {
   // set static folder
-  app.use(express.static("client"));
+  app.use(
+    expressStaticGzip("client/", {
+      enableBrotli: true,
+      orderPreference: ["br", "gz"],
+    })
+  );
+  // app.use(express.static("client"));
   //   app.get("/sw.js", (req, res) => {
   //     res.sendFile(path.resolve(__dirname, "client/", "sw.js"));
   //   });
