@@ -33,7 +33,7 @@ export const register = (config: configI) => {
       return;
     }
     window.addEventListener("load", () => {
-      const swUrl = `${publicUrl}/service-worker.js`;
+      const swUrl = `sw.bundle.js`;
 
       if (isLocalhost) {
         // This is running on localhost. Let's check if a service worker still exists or not.

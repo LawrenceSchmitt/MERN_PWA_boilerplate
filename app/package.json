@@ -7,7 +7,8 @@
     "dev": "webpack --watch --config config/client.webpack.dev.js",
     "check:real_favicon_updates": "cd public && real-favicon check-for-update --fail-on-update faviconData.json",
     "generate_inject:favicons": "cd public && real-favicon generate faviconDescription.json faviconData.json ../../dist/client/static/media/icons/ && real-favicon inject faviconData.json ../../dist/client ../../dist/client/*.html",
-    "build": "npm run check:real_favicon_updates && NODE_ENV=production webpack --config config/client.webpack.prod.js && npm run generate_inject:favicons"
+    "build": "webpack --config config/client.webpack.prod.js",
+    "PWA": "webpack --config config/PWA.webpack.prod.js"
   },
   "author": "Vindao (Vincent Schmitt)",
   "license": "ISC",
@@ -30,6 +31,7 @@
     "cli-real-favicon": "0.0.7",
     "compression-webpack-plugin": "^2.0.0",
     "file-loader": "^3.0.1",
+    "html-minifier-webpack-plugin": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
     "image-webpack-loader": "^4.6.0",
     "imagemin-webp-webpack-plugin": "^3.1.0",

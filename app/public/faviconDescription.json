@@ -1,6 +1,8 @@
 {
   "masterPicture": "./favicon.svg",
   "iconsPath": "/static/media/icons",
+  "name": "test",
+  "short_name": "testing",
   "design": {
     "ios": {
       "pictureAspect": "backgroundAndMargin",

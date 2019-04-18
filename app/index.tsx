@@ -26,7 +26,7 @@ const onSWsuccess = (registration: SWRegistrationI) => {
 };
 
 const onNoInternet = () => {
-  console.log("no internte");
+  console.log("no internet");
 };
 
 register({
@@ -34,13 +34,3 @@ register({
   onSuccess: onSWsuccess,
   onNoInternet: onNoInternet,
 });
-
-// if ("serviceWorker" in navigator) {
-//   // Use the window load event to keep the page load performant
-//   window.addEventListener("load", () => {
-//     navigator.serviceWorker.register("/service-worker.js");
-//   });
-// }
-
-// // register serviceworker
-// serviceworker.register({});

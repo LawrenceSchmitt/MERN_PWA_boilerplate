@@ -7,6 +7,7 @@
     "install:client": "npm i --prefix app",
     "build:client": "npm run build --prefix app",
     "dev:client": "npm run dev --prefix app",
+    "PWA:client": "npm run PWA --prefix app",
     "install:server": "npm install --prefix server",
     "dev:server": "npm run dev --prefix server",
     "build:server": "npm run build --prefix server",
@@ -33,5 +34,8 @@
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.0",
     "workbox-webpack-plugin": "^4.2.0"
+  },
+  "dependencies": {
+    "npm": "^6.9.0"
   }
 }
