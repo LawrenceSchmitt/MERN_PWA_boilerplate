@@ -2,11 +2,7 @@
   "name": "mern_boilerplate_server",
   "version": "0.0.1",
   "description": "server side of Mern_boilerplate with webpack",
-  "main": "index.js",
-  "scripts": {
-    "dev": "webpack --watch --config config/server.webpack.dev.js",
-    "build": "NODE_ENV=production webpack --config config/server.webpack.prod.js"
-  },
+  "main": "index.ts",
   "author": "Vindao (Vincent Schmitt)",
   "license": "ISC",
   "dependencies": {
@@ -19,7 +15,6 @@
   "devDependencies": {
     "@types/body-parser": "^1.17.0",
     "@types/cors": "^2.8.4",
-    "@types/express": "^4.16.1",
-    "nodemon-webpack-plugin": "^4.0.8"
+    "@types/express": "^4.16.1"
   }
 }

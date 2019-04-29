@@ -1,4 +1,4 @@
-const Paths = require("../../config/Paths");
+const Paths = require("./Paths");
 const BrowserSyncPlugin = require("browser-sync-webpack-plugin");
 const WebpackCleanupPlugin = require("webpack-cleanup-plugin");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -15,7 +15,9 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.tsx?$/, loader: "ts-loader" },
+      { test: /\.tsx?$/, exclude: [/node_modules/], loader: "ts-loader", options: {
+        configFile: Paths.tsconfigClient
+      } },
       { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
       {
         test: /\.(gif|png|jpe?g|svg|webp)$/i,

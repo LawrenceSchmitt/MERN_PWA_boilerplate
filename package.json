@@ -5,13 +5,12 @@
   "main": "server/index.js",
   "scripts": {
     "install:client": "npm i --prefix app",
-    "build:client": "npm run build --prefix app",
-    "dev:client": "npm run dev --prefix app",
-    "PWA:client": "npm run PWA --prefix app",
+    "build:client": "webpack --config config/client.webpack.prod.js",
+    "dev:client": "webpack --watch --config config/client.webpack.dev.js",
     "install:server": "npm install --prefix server",
-    "dev:server": "npm run dev --prefix server",
-    "build:server": "npm run build --prefix server",
-    "build": "npm run build:server && npm run build:client",
+    "dev:server": "webpack --watch --config config/server.webpack.dev.js",
+    "build:server": "webpack --config config/server.webpack.prod.js",
+    "build": "NODE_ENV=production npm run build:server && npm run build:client",
     "start": "node dist/server.bundle.js",
     "dev": "npm run dev:client & npm run dev:server",
     "git": "git add . && git commit -m 'daily changes' && git push origin master",
@@ -28,14 +27,22 @@
   "author": "Vindao (Vincent Schmitt)",
   "license": "ISC",
   "devDependencies": {
+    "app-manifest-webpack-plugin": "^1.2.0",
+    "brotli-webpack-plugin": "^1.1.0",
+    "browser-sync": "^2.26.5",
+    "browser-sync-webpack-plugin": "^2.2.2",
+    "compression-webpack-plugin": "^2.0.0",
+    "file-loader": "^3.0.1",
+    "html-webpack-plugin": "^3.2.0",
+    "image-webpack-loader": "^4.6.0",
+    "imagemin-webp-webpack-plugin": "^3.1.0",
+    "imagemin-webpack-plugin": "^2.4.2",
+    "nodemon-webpack-plugin": "^4.0.8",
     "source-map-loader": "^0.2.4",
-    "ts-loader": "^5.3.3",
-    "typescript": "^3.4.3",
+    "ts-loader": "^5.4.4",
+    "typescript": "^3.4.5",
     "webpack": "^4.30.0",
-    "webpack-cli": "^3.3.0",
-    "workbox-webpack-plugin": "^4.2.0"
-  },
-  "dependencies": {
-    "npm": "^6.9.0"
+    "webpack-cleanup-plugin": "^0.5.1",
+    "webpack-cli": "^3.3.1"
   }
 }

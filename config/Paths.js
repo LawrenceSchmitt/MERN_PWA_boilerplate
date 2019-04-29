@@ -13,5 +13,8 @@ module.exports = {
   clientDist: path.join(DistDir, "client/"),
   HTMLTemplate: path.join(PublicDir, "index.html"),
   Logo: path.join(PublicDir, 'favicon.svg'),
-  SW: path.join(ClientDir, 'sw.js')
+  SW: path.join(ClientDir, 'sw.js'),
+  tsconfigServer: path.join(BaseDir, 'config', 'tsconfig.server.json'),
+  tsconfigClient: path.join(BaseDir, 'config', 'tsconfig.client.json'),
+
 };

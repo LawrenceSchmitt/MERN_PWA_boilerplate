@@ -3,13 +3,7 @@
   "version": "0.0.1",
   "description": "Client code of MERN boilerplate",
   "main": "index.js",
-  "scripts": {
-    "dev": "webpack --watch --config config/client.webpack.dev.js",
-    "check:real_favicon_updates": "cd public && real-favicon check-for-update --fail-on-update faviconData.json",
-    "generate_inject:favicons": "cd public && real-favicon generate faviconDescription.json faviconData.json ../../dist/client/static/media/icons/ && real-favicon inject faviconData.json ../../dist/client ../../dist/client/*.html",
-    "build": "webpack --config config/client.webpack.prod.js",
-    "PWA": "webpack --config config/PWA.webpack.prod.js"
-  },
+  "scripts": {},
   "author": "Vindao (Vincent Schmitt)",
   "license": "ISC",
   "dependencies": {
@@ -23,20 +17,6 @@
     "@types/react": "^16.8.13",
     "@types/react-dom": "^16.8.4",
     "@types/react-router-dom": "^4.3.2",
-    "@types/styled-components": "^4.1.14",
-    "app-manifest-webpack-plugin": "^1.2.0",
-    "brotli-webpack-plugin": "^1.1.0",
-    "browser-sync": "^2.26.3",
-    "browser-sync-webpack-plugin": "^2.2.2",
-    "cli-real-favicon": "0.0.7",
-    "compression-webpack-plugin": "^2.0.0",
-    "file-loader": "^3.0.1",
-    "html-minifier-webpack-plugin": "^2.0.0",
-    "html-webpack-plugin": "^3.2.0",
-    "image-webpack-loader": "^4.6.0",
-    "imagemin-webp-webpack-plugin": "^3.1.0",
-    "imagemin-webpack-plugin": "^2.4.2",
-    "webpack-cleanup-plugin": "^0.5.1",
-    "webpack-cli": "^3.3.0"
+    "@types/styled-components": "^4.1.14"
   }
 }

@@ -1,4 +1,4 @@
-const Paths = require("../../config/Paths");
+const Paths = require("./Paths");
 
 const ImageminPlugin = require("imagemin-webpack-plugin").default;
 const ImageminWebpWebpackPlugin = require("imagemin-webp-webpack-plugin");
@@ -19,7 +19,9 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.tsx?$/, loader: "ts-loader" },
+      { test: /\.tsx?$/, exclude: [/node_modules/], loader: "ts-loader", options: {
+        configFile: Paths.tsconfigClient
+      } },
       {
         test: /\.(gif|png|jpe?g|svg|webp)$/i,
         use: [

@@ -1,4 +1,4 @@
-const Paths = require("../../config/Paths");
+const Paths = require("./Paths");
 
 const webpack = require("webpack");
 const NodemonPlugin = require("nodemon-webpack-plugin");
@@ -14,7 +14,9 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.ts$/, loader: "ts-loader" },
+      { test: /\.tsx?$/, exclude: [/node_modules/], loader: "ts-loader", options: {
+        configFile: Paths.tsconfigServer
+      } },
       { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
     ],
   },
