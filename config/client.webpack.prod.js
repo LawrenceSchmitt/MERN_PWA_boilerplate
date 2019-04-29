@@ -7,6 +7,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const BrotliPlugin = require("brotli-webpack-plugin");
 const AppManifestWebpackPlugin = require("app-manifest-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
+const HtmlWebpackBrotliPlugin = require("html-webpack-brotli-plugin");
 
 module.exports = {
   entry: {client: Paths.client, sw: Paths.SW},
@@ -44,38 +45,24 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: Paths.HTMLTemplate,
       inject: true,
-      minify: true
+      addBrotliExtension: true
     }),
-    
-    
     new CompressionPlugin({
       filename: "[path].gz[query]",
       algorithm: "gzip",
-      test: /\.js$|\.css$|\.html$/,
+      test: /\.(js|css|html|svg)$/,
       threshold: 10240,
       minRatio: 0.7,
     }),
     new BrotliPlugin({
       asset: "[path].br[query]",
-      test: /\.js$|\.css$|\.html$/,
+      test: /\.(js|css|html|svg)$/,
       threshold: 10240,
       minRatio: 0.7,
     }),
-    new AppManifestWebpackPlugin({
-      logo: Paths.Logo,
-      statsFilename: "iconstats.json",
-      persistentCache: false,
-      output: "./PWA/",
-      prefix: 'PWA/',
-      config: {
-        appName: "Vindao Webpack App",
-        appDiscription:
-          "This is a boilerplate for a Progressive-web-application, please change this text in the client.webpack.prod.js file within the app directory. You can find all possible configs at https://www.npmjs.com/package/app-manifest-webpack-plugin",
-        developerName: "Vindao (Vincent Schmitt)",
-      },
-    }),
-    new ImageminPlugin({
-      disable: false,
+    new HtmlWebpackBrotliPlugin(),
+    new ImageminWebpWebpackPlugin({
+      test: /\.(jpe?g|png|svg|gif)/,
       mozjpeg: {
         progressive: true,
         quality: 65,
@@ -90,12 +77,20 @@ module.exports = {
       gifsicle: {
         interlaced: false,
       },
-      webp: {
-        quality: 75,
+    }),
+    new AppManifestWebpackPlugin({
+      logo: Paths.Logo,
+      statsFilename: "iconstats.json",
+      persistentCache: false,
+      output: "./PWA/",
+      prefix: 'PWA/',
+      config: {
+        appName: "Vindao Webpack App",
+        appDiscription:
+          "This is a boilerplate for a Progressive-web-application, please change this text in the client.webpack.prod.js file within the app directory. You can find all possible configs at https://www.npmjs.com/package/app-manifest-webpack-plugin",
+        developerName: "Vindao (Vincent Schmitt)",
       },
     }),
-    new ImageminWebpWebpackPlugin({
-      test: /\.(jpe?g|png|svg|gif)/,
-    }),
+    
   ],
 };

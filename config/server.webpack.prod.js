@@ -1,5 +1,8 @@
 const Paths = require("./Paths");
 
+const CopyPlugin = require('copy-webpack-plugin');
+
+
 module.exports = {
   entry: Paths.server,
   output: {
@@ -15,6 +18,11 @@ module.exports = {
       configFile: Paths.tsconfigServer
     } },],
   },
+  plugins: [
+    new CopyPlugin([
+      { from: Paths.PackageDistJson, to: Paths.dist + 'package.json' },
+    ]),
+  ],
   mode: "production",
   target: "node",
 };
