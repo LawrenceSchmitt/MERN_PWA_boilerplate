@@ -1,6 +1,5 @@
 const Paths = require("./Paths");
 
-
 module.exports = {
   entry: Paths.server,
   output: {
