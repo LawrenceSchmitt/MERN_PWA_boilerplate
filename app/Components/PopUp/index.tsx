@@ -2,6 +2,8 @@ import * as React from "react";
 
 import styled from "styled-components";
 
+import { useTransition, animated } from "react-spring";
+
 export interface PopUpProps {
   text: string;
   duration: number;
@@ -9,29 +11,52 @@ export interface PopUpProps {
   color?: string;
 }
 
+//@ts-ignore
 const PopUp: React.SFC<PopUpProps> = props => {
-  const PopUpContentDiv = styled.div`
-    grid-column: 2;
-    margin: 0 auto;
-  `;
+  // state
+  const [show, setShow] = React.useState(true);
+  // animation
+  const transitions = useTransition(show, null, {
+    from: {
+      transform: "rotateX(-180deg)"
+    },
+    enter: { transform: "rotateX(0deg)" },
+    leave: { transform: "rotateX(-180deg)" }
+  });
+  // style
 
   const PopUpDiv = styled.div`
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 8fr 1fr;
     position: absolute;
     text-align: center;
-    padding: 2em 0;
-    background: ${props.background ? props.background : "black"};
+    background-color: transparent;
     color: ${props.color ? props.color : "white"};
   `;
   const PopUpCloseDiv = styled.div`
+    width: 7.5%;
+    -webkit-clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 50%,
+      60% 100%,
+      40% 100%,
+      0 50%
+    );
+    clip-path: polygon(0 0, 100% 0, 100% 50%, 60% 100%, 40% 100%, 0 50%);
+    transform: translateY(-20%);
+    background: ${props.background ? props.background : "#01D3FF"};
     cursor: pointer;
-    float: right;
-    justify-self: center;
-    align-self: center;
+    margin: 0 auto;
+    font-size: 1.5em;
   `;
-  const [show, setShow] = React.useState(true);
+
+  const PopUpContentDiv = styled.div`
+    width: 100%;
+    background: ${props.background ? props.background : "#01D3FF"};
+    margin: 0 auto;
+    padding: 2em 1.5em;
+  `;
+
   if (props.duration) {
     React.useEffect(() => {
       setTimeout(() => {
@@ -39,12 +64,21 @@ const PopUp: React.SFC<PopUpProps> = props => {
       }, props.duration * 1000);
     }, []);
   }
-  return show ? (
-    <PopUpDiv className="popUp">
-      <PopUpContentDiv>{props.text}</PopUpContentDiv>
-      <PopUpCloseDiv>&times;</PopUpCloseDiv>
-    </PopUpDiv>
-  ) : null;
+  const handleClose = (e: any) => {
+    e.preventDefault();
+    setShow(false);
+  };
+  return transitions.map(
+    (transition: any) =>
+      transition.item && (
+        <animated.div key={transition.key} style={transition.props}>
+          <PopUpDiv className="popUp">
+            <PopUpContentDiv>{props.text}</PopUpContentDiv>
+            <PopUpCloseDiv onClick={handleClose}>&times;</PopUpCloseDiv>
+          </PopUpDiv>
+        </animated.div>
+      )
+  );
 };
 
 export default PopUp;

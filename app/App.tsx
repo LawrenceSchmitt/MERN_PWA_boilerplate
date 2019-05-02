@@ -21,12 +21,9 @@ export interface AppProps {}
 
 const App: React.SFC<AppProps> = () => {
   const [SWstate, setSWstate] = React.useState("");
-  const [online, setOnline] = React.useState(true);
   const handleServiceWorkerInfo = (e: any) => {
     setSWstate(e.detail);
   };
-  window.addEventListener("offline", () => setOnline(false), true);
-  window.addEventListener("online", () => setOnline(true), true);
   window.addEventListener("serviceWorker", handleServiceWorkerInfo, true);
   const SWpopUp = (type: string) => {
     switch (type) {
@@ -47,7 +44,7 @@ const App: React.SFC<AppProps> = () => {
   return (
     <BrowserRouter>
       {SWstate === "" ? null : SWpopUp(SWstate)}
-      {online ? null : (
+      {navigator.onLine ? null : (
         <React.Suspense fallback={"...loading"}>
           <OnNoInternet />
         </React.Suspense>
