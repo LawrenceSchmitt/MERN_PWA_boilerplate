@@ -1,6 +1,8 @@
+// import { popupEvent } from "./custom/popupEvent";
+
 interface configI {
-  onUpdate?: (SWRegistration: SWRegistrationI) => void;
-  onSuccess?: (SWRegistration: SWRegistrationI) => void;
+  onUpdate?: () => void;
+  onSuccess?: () => void;
   onNoInternet?: () => void;
 }
 
@@ -25,7 +27,6 @@ const isLocalhost = Boolean(
 export const register = (config: configI) => {
   if (process.env.NODE_ENV === "production" && "serviceWorker" in navigator) {
     const publicUrl = new URL(window.location.href);
-    console.log(publicUrl);
     if (publicUrl.origin !== window.location.origin) {
       // Our service worker won't work if PUBLIC_URL is on a different origin
       // from what our page is served on. This might happen if a CDN is used to
@@ -70,10 +71,11 @@ const registerValidSW = (swURL: string, config: configI) => {
             if (navigator.serviceWorker.controller) {
               // new content is available but not served yet
               // it will be served when all tabs of this application are closed
+
               console.log(`New content is available and will be used when all 
                         tabs for this page are closed. See http://bit.ly/CRA-PWA.`);
               if (config && config.onUpdate) {
-                config.onUpdate(SWRegistration);
+                config.onUpdate();
               }
             } else {
               // At this point, everything has been precached.
@@ -82,7 +84,7 @@ const registerValidSW = (swURL: string, config: configI) => {
               console.log("Content is cached for offline use.");
 
               if (config && config.onSuccess) {
-                config.onSuccess(SWRegistration);
+                config.onSuccess();
               }
             }
           }
@@ -120,9 +122,6 @@ const checkValidServiceWorker = (swURL: swURLT, config: configI) => {
     })
     .catch(() => {
       console.log("No internet connection. App is running in offline mode");
-      if (config && config.onNoInternet) {
-        config.onNoInternet();
-      }
     });
 };
 

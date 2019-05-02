@@ -2,7 +2,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { GlobalStyles } from "./Theme/GlobalStyles";
 import App from "./App";
-import { SWRegistrationI, register } from "./serviceWorker";
+import { register } from "./serviceWorker";
 
 const element = document.getElementById("app");
 
@@ -15,22 +15,23 @@ const app = (
 
 ReactDOM.render(app, element);
 
-const onSWupdate = (registration: SWRegistrationI) => {
-  console.log("updated");
-  console.log(registration);
+const onSWupdate = () => {
+  const event = new CustomEvent("serviceWorker", {
+    detail: "updated"
+  });
+  window.dispatchEvent(event);
+  console.info("service-worker updated");
 };
-
-const onSWsuccess = (registration: SWRegistrationI) => {
-  console.log("success");
-  console.log(registration);
-};
-
-const onNoInternet = () => {
-  console.log("no internet");
+const onSWsuccess = async () => {
+  localStorage.setItem("serviceWorker", "success");
+  const event = new CustomEvent("serviceWorker", {
+    detail: "success"
+  });
+  await window.dispatchEvent(event);
+  console.info("service-worker success");
 };
 
 register({
   onUpdate: onSWupdate,
-  onSuccess: onSWsuccess,
-  onNoInternet: onNoInternet,
+  onSuccess: onSWsuccess
 });
