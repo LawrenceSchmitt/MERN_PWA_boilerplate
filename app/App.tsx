@@ -47,7 +47,7 @@ const App: React.SFC<AppProps> = () => {
   return (
     <BrowserRouter>
       {SWstate === "" ? null : SWpopUp(SWstate)}
-      {!online ? null : (
+      {online ? null : (
         <React.Suspense fallback={"...loading"}>
           <OnNoInternet />
         </React.Suspense>
