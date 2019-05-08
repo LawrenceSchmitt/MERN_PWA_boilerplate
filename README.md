@@ -23,7 +23,8 @@ The client-side is initially configured to:<br/>
 ## Usage
 
 <br/>
-### Cloning the Project
+<h3> Cloning the Project </h3>
+<br/>
 first clone the repository with:<br/>
 <br/>
 SSH: "git clone git@github.com:Vindao/MERN_boilerplate.git"<br/>
