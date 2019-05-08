@@ -2,54 +2,23 @@ import * as React from "react";
 
 import { BrowserRouter, HashRouter, Switch, Route } from "react-router-dom";
 
+import LoadedComponent from "./Components/LoadedComponent";
+
 // Pages
 import Home from "./Pages/Home";
 import Test from "./Pages/Test";
 
 // components
-const OnSWupdate = React.lazy(() =>
-  import("./Components/ServiceWorker_PopUps/OnUpdate")
+const SWpopUps = LoadedComponent(() =>
+  import("./Components/ServiceWorker_PopUps")
 );
-const OnSWsuccess = React.lazy(() =>
-  import("./Components/ServiceWorker_PopUps/OnSuccess")
-);
-const OnNoInternet = React.lazy(() =>
-  import("./Components/ServiceWorker_PopUps/OnNoInternet")
-);
-
 export interface AppProps {}
 
 const App: React.SFC<AppProps> = () => {
-  const [SWstate, setSWstate] = React.useState("");
-  const handleServiceWorkerInfo = (e: any) => {
-    setSWstate(e.detail);
-  };
-  window.addEventListener("serviceWorker", handleServiceWorkerInfo, true);
-  const SWpopUp = (type: string) => {
-    switch (type) {
-      case "success":
-        return (
-          <React.Suspense fallback={"...loading"}>
-            <OnSWsuccess />
-          </React.Suspense>
-        );
-      case "updated":
-        return (
-          <React.Suspense fallback={"...loading"}>
-            <OnSWupdate />
-          </React.Suspense>
-        );
-    }
-  };
   const toReturn = () => {
     return process.env.NODE_ENV === "production" ? (
       <BrowserRouter>
-        {SWstate === "" ? null : SWpopUp(SWstate)}
-        {navigator.onLine ? null : (
-          <React.Suspense fallback={"...loading"}>
-            <OnNoInternet />
-          </React.Suspense>
-        )}
+        <SWpopUps />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/test" component={Test} />
@@ -57,12 +26,7 @@ const App: React.SFC<AppProps> = () => {
       </BrowserRouter>
     ) : (
       <HashRouter>
-        {SWstate === "" ? null : SWpopUp(SWstate)}
-        {navigator.onLine ? null : (
-          <React.Suspense fallback={"...loading"}>
-            <OnNoInternet />
-          </React.Suspense>
-        )}
+        <SWpopUps />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/test" component={Test} />
