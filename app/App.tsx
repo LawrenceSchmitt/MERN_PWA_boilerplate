@@ -4,6 +4,9 @@ import { BrowserRouter, HashRouter, Switch, Route } from "react-router-dom";
 
 import LoadedComponent from "./Components/LoadedComponent";
 
+// contexts
+import SWContextProvider from "./contexts/Providers/SWContextProvider";
+
 // Pages
 import Home from "./Pages/Home";
 import Test from "./Pages/Test";
@@ -18,7 +21,9 @@ const App: React.SFC<AppProps> = () => {
   const toReturn = () => {
     return process.env.NODE_ENV === "production" ? (
       <BrowserRouter>
-        <SWpopUps />
+        <SWContextProvider>
+          <SWpopUps />
+        </SWContextProvider>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/test" component={Test} />
