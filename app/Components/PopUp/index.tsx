@@ -7,7 +7,7 @@ import { useTransition, animated } from "react-spring";
 export interface PopUpProps {
   text: string;
   duration: number;
-  background?: string;
+  backgroundColor?: string;
   color?: string;
 }
 
@@ -18,19 +18,19 @@ const PopUp: React.SFC<PopUpProps> = props => {
   // animation
   const transitions = useTransition(show, null, {
     from: {
-      transform: "rotateX(-180deg)"
+      transform: "rotateX(-90deg)"
     },
     enter: { transform: "rotateX(0deg)" },
-    leave: { transform: "rotateX(-180deg)" }
+    leave: { transform: "rotateX(-90deg)" }
   });
   // style
 
   const PopUpDiv = styled.div`
     width: 100vw;
-    position: absolute;
     text-align: center;
     background-color: transparent;
-    color: ${props.color ? props.color : "white"};
+    color: ${props.color || "white"};
+    z-index: 999;
   `;
   const PopUpCloseDiv = styled.div`
     width: 7.5%;
@@ -44,7 +44,7 @@ const PopUp: React.SFC<PopUpProps> = props => {
     );
     clip-path: polygon(0 0, 100% 0, 100% 50%, 60% 100%, 40% 100%, 0 50%);
     transform: translateY(-20%);
-    background: ${props.background ? props.background : "#01D3FF"};
+    background-color: ${props.backgroundColor || "#01D3FF"};
     cursor: pointer;
     margin: 0 auto;
     font-size: 1.5em;
@@ -52,9 +52,8 @@ const PopUp: React.SFC<PopUpProps> = props => {
 
   const PopUpContentDiv = styled.div`
     width: 100%;
-    background: ${props.background ? props.background : "#01D3FF"};
-    margin: 0 auto;
-    padding: 2em 1.5em;
+    background-color: ${props.backgroundColor || "#01D3FF"};
+    padding: 2em 0;
   `;
 
   if (props.duration) {
@@ -71,7 +70,10 @@ const PopUp: React.SFC<PopUpProps> = props => {
   return transitions.map(
     (transition: any) =>
       transition.item && (
-        <animated.div key={transition.key} style={transition.props}>
+        <animated.div
+          key={transition.key}
+          style={{ ...transition.props, transformOrigin: "top" }}
+        >
           <PopUpDiv className="popUp">
             <PopUpContentDiv>{props.text}</PopUpContentDiv>
             <PopUpCloseDiv onClick={handleClose}>&times;</PopUpCloseDiv>
