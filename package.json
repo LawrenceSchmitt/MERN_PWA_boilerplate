@@ -4,17 +4,16 @@
   "description": "MERN boilerplate with Webpack",
   "main": "server/index.js",
   "scripts": {
+    "install:all": "npm i && npm run install:client && npm run install:server",
     "install:client": "npm i --prefix app",
     "build:client": "NODE_ENV=production webpack --config config/client.webpack.prod.js && rm dist/client/*.webp",
-    "dev:client": "webpack --watch --config config/client.webpack.dev.js",
+    "start:client": "webpack --watch --config config/client.webpack.dev.js",
     "install:server": "npm install --prefix server",
-    "dev:server": "webpack --watch --config config/server.webpack.dev.js",
+    "start:server": "webpack --watch --config config/server.webpack.dev.js",
     "build:server": "NODE_ENV=production webpack --config config/server.webpack.prod.js",
     "build": "npm run build:server && npm run build:client",
-    "start": "node dist/server.bundle.js",
-    "dev": "npm run dev:client & npm run dev:server",
-    "git": "git add . && git commit -m 'daily changes' && git push origin master",
-    "heroku": "npm run build && cd dist && git add . && git commit -am 'changed' && git push heroku master"
+    "start": "npm run start:client & npm run start:server",
+    "git": "git add . && git commit -m 'changes' && git push origin master"
   },
   "keywords": [
     "boilerplate",
