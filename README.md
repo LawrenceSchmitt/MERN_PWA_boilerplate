@@ -25,7 +25,7 @@ The client-side is initially configured to:<br/>
 <h3> Cloning the Project </h3>
 first clone the repository with:<br/>
 <br/>
-SSH: "git clone git@github.com:Vindao/MERN_boilerplate.git"<br/>
+SSH: <code>git clone git@github.com:Vindao/MERN_boilerplate.git</code><br/>
 HTTPS: "git clone https://github.com/Vindao/MERN_boilerplate.git"<br/>
 <br/>
 Then cd into the project and open it in your favirote editor.<br/>
