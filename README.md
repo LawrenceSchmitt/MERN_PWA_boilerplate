@@ -7,6 +7,8 @@ it can be easily configured to:<br/>
 
 - use mongoDB via mongoose as a backend
 - add indefinite routes
+- HTTPS
+- HTTP to HTTPS
 - and all known possibilities of express
 
 The client-side is initially configured to:<br/>
