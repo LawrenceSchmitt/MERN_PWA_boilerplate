@@ -1,5 +1,5 @@
 {
-  "name": "mern_boilerplate_server",
+  "name": "mern_pwa_boilerplate_server",
   "version": "0.0.1",
   "description": "server side of Mern_boilerplate with webpack",
   "main": "index.ts",

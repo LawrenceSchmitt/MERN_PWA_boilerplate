@@ -1,5 +1,5 @@
 {
-  "name": "mern_boilerplate_client",
+  "name": "mern_pwa_boilerplate_client",
   "version": "0.0.1",
   "description": "Client code of MERN boilerplate",
   "main": "index.js",
@@ -11,9 +11,8 @@
     "react-dom": "^16.8.6",
     "react-image": "^2.1.1",
     "react-router-dom": "^5.0.0",
-    "react-spring": "^8.0.19",
-    "styled-components": "^4.2.0",
-    "webp-converter": "^2.2.2"
+    "react-spring": "^8.0.20",
+    "styled-components": "^4.2.0"
   },
   "devDependencies": {
     "@types/react": "^16.8.13",

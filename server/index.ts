@@ -42,14 +42,14 @@ app.use(json());
 app.use(cors());
 app.use(
   urlencoded({
-    extended: true,
+    extended: true
   })
 );
 const ignoreHosts = [/localhost:3000/, /localhost:5000/];
 const ignoreRoutes: RegExp[] = [];
 app.use(redirectToHTTPS(ignoreHosts, ignoreRoutes));
 
-// // connect to MongoDB
+// connect to MongoDB
 // connect(
 //   mongoURI,
 //   { useNewUrlParser: true }
@@ -59,9 +59,9 @@ app.use(redirectToHTTPS(ignoreHosts, ignoreRoutes));
 
 // ROUTES
 
-// import Users from "./routes/Users";
+import Example from "./routes/Example";
 
-// app.use("/user", Users);
+app.use("/api", Example);
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === "production") {
@@ -69,7 +69,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(
     expressStaticGzip("client/", {
       enableBrotli: true,
-      orderPreference: ["br", "gz"],
+      orderPreference: ["br", "gz"]
     })
   );
   //   app.get("/sw.js", (req, res) => {

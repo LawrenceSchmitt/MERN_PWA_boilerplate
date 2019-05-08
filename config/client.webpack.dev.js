@@ -7,17 +7,22 @@ module.exports = {
   entry: Paths.client,
   output: {
     path: Paths.clientDist,
-    filename: "client.bundle.js",
+    filename: "client.bundle.js"
   },
   devtool: "source-map",
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".json", ".jsx"],
+    extensions: [".ts", ".tsx", ".js", ".json", ".jsx"]
   },
   module: {
     rules: [
-      { test: /\.tsx?$/, exclude: [/node_modules/], loader: "ts-loader", options: {
-        configFile: Paths.tsconfigClient
-      } },
+      {
+        test: /\.(tsx?|jsx?)$/,
+        exclude: [/node_modules/],
+        loader: "ts-loader",
+        options: {
+          configFile: Paths.tsconfigClient
+        }
+      },
       { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
       {
         test: /\.(gif|png|jpe?g|svg|webp)$/i,
@@ -25,29 +30,29 @@ module.exports = {
           {
             loader: "file-loader",
             options: {
-              name: "static/media/[name].[hash:8].[ext]",
-            },
+              name: "static/media/[name].[hash:8].[ext]"
+            }
           },
           {
-            loader: "image-webpack-loader",
-          },
-        ],
-      },
-    ],
+            loader: "image-webpack-loader"
+          }
+        ]
+      }
+    ]
   },
   plugins: [
     new WebpackCleanupPlugin(),
     new HtmlWebpackPlugin({
       template: Paths.HTMLTemplate,
-      inject: true,
+      inject: true
     }),
     new BrowserSyncPlugin({
       host: "localhost",
       open: false,
       port: 3000,
-      server: { baseDir: ["dist/client"] },
-    }),
+      server: { baseDir: ["dist/client"] }
+    })
   ],
 
-  mode: "development",
+  mode: "development"
 };

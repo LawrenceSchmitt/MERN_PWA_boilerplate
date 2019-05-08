@@ -1,11 +1,11 @@
 {
-  "name": "mern_boilerplate",
+  "name": "mern_pwa_boilerplate",
   "version": "0.0.1",
   "description": "MERN boilerplate with Webpack",
   "main": "server/index.js",
   "scripts": {
     "install:client": "npm i --prefix app",
-    "build:client": "NODE_ENV=production webpack --config config/client.webpack.prod.js",
+    "build:client": "NODE_ENV=production webpack --config config/client.webpack.prod.js && rm dist/client/*.webp",
     "dev:client": "webpack --watch --config config/client.webpack.dev.js",
     "install:server": "npm install --prefix server",
     "dev:server": "webpack --watch --config config/server.webpack.dev.js",
@@ -22,6 +22,8 @@
     "MongoDB",
     "Express",
     "React",
+    "PWA",
+    "progressive-web-app",
     "Nodejs"
   ],
   "author": "Vindao (Vincent Schmitt)",
@@ -45,5 +47,6 @@
     "webpack": "^4.30.0",
     "webpack-cleanup-plugin": "^0.5.1",
     "webpack-cli": "^3.3.1"
-  }
+  },
+  "dependencies": {}
 }
