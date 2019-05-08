@@ -7,8 +7,7 @@ module.exports = {
   entry: Paths.client,
   output: {
     path: Paths.clientDist,
-    filename: "client.bundle.js",
-    publicPath: "/"
+    filename: "client.bundle.js"
   },
   devtool: "source-map",
   resolve: {

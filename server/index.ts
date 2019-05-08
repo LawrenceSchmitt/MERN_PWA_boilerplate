@@ -79,17 +79,6 @@ if (process.env.NODE_ENV === "production") {
       }
     });
   });
-} else {
-  app.get("/*", (req, res) => {
-    res.sendFile(
-      path.join(__dirname, "../dist/client/index.html"),
-      (err: string) => {
-        if (err) {
-          res.status(500).send(err);
-        }
-      }
-    );
-  });
 }
 
 app.listen(port, () => {
