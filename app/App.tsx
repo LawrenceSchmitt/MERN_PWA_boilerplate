@@ -31,7 +31,9 @@ const App: React.SFC<AppProps> = () => {
       </BrowserRouter>
     ) : (
       <HashRouter>
-        <SWpopUps />
+        <SWContextProvider>
+          <SWpopUps />
+        </SWContextProvider>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/test" component={Test} />
