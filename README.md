@@ -26,26 +26,26 @@ The client-side is initially configured to:<br/>
 first clone the repository with:<br/>
 <br/>
 SSH: <code>git clone git@github.com:Vindao/MERN_boilerplate.git</code><br/>
-HTTPS: "git clone https://github.com/Vindao/MERN_boilerplate.git"<br/>
+HTTPS: <code>git clone https://github.com/Vindao/MERN_boilerplate.git</code><br/>
 <br/>
 Then cd into the project and open it in your favirote editor.<br/>
 <h3>Installing dependencies</h3>
 To install all dependecies, open a terminal and run:<br/>
-"npm run install:all" to install all dependencies, including the build dependencies at the root folder, the dependecies for the client side, and the server side.<br/>
+<code>npm run install:all</code> to install all dependencies, including the build dependencies at the root folder, the dependecies for the client side, and the server side.<br/>
 <br/>
 Alternatively you can install all the environments separately with:<br/>
-"npm i" for build dependencies,<br/>
-"npm run install:client" for client dependecies, and<br/>
-"npm run install:server" for server dependencies.<br/>
+<code>npm i</code> for build dependencies,<br/>
+<code>npm run install:client</code> for client dependecies, and<br/>
+<code>npm run install:server</code> for server dependencies.<br/>
 <h3>Start development environments</h3>
 To start the development script simply open a terminal and type:<br/>
-"npm start" to start the development server, and client.<br/>
+<code>npm start</code> to start the development server, and client.<br/>
 <br/>
 Alternatively you can start only the server or the client by running:<br/>
-"npm run start:server" or "npm run start:client" respectively.<br/>
+<code>npm run start:server</code> or <code>npm run start:client</code> respectively.<br/>
 <h3>Build the project for production</h3>
 To build the project you can run the build script by:<br/>
-"npm run build" to build the server and client.<br/>
+<code>npm run build</code> to build the server and client.<br/>
 <br/>
 Alternatively you can build only the server or client by running:<br/>
-"npm run build:server" or "npm run build:client" respectively.
+<code>npm run build:server</code> or <code>npm run build:client</code> respectively.
