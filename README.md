@@ -40,11 +40,11 @@ Alternatively you can install all the environments separately with:<br/>
 To start the development script simply open a terminal and type:<br/>
 "npm start" to start the development server, and client.<br/>
 <br/>
-alternatively you can start only the server or the client by running:<br/>
+Alternatively you can start only the server or the client by running:<br/>
 "npm run start:server" or "npm run start:client" respectively.<br/>
 <br/>
 To build the project you can run the build script by:<br/>
 "npm run build" to build the server and client.<br/>
 <br/>
-alternatively you can build only the server or client by running:<br/>
+Alternatively you can build only the server or client by running:<br/>
 "npm run build:server" or "npm run build:client" respectively.
