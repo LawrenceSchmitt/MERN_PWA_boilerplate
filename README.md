@@ -1,9 +1,8 @@
 # React_PWA_boilerplate
 
 A simple boilerplate for a progressive-web-app MERN application. <br/>
-It includes a server side and a client side. <br/>
 <br/>
-The server-side is based on express and initially only consists of one example route as "api/example"
+The server-side is based on express and initially only consists of one example route at "api/example"
 it can be easily configured to:<br/>
 
 - use mongoDB via mongoose as a backend
@@ -25,8 +24,8 @@ The client-side is initially configured to:<br/>
 
 first clone the repository with:<br/>
 <br/>
-SSH: git clone git@github.com:Vindao/MERN_boilerplate.git<br/>
-HTTPS: git clone https://github.com/Vindao/MERN_boilerplate.git<br/>
+SSH: "git clone git@github.com:Vindao/MERN_boilerplate.git"<br/>
+HTTPS: "git clone https://github.com/Vindao/MERN_boilerplate.git"<br/>
 <br/>
 Then cd into the project and open it in your favirote editor.<br/>
 <br/>
@@ -39,7 +38,7 @@ Alternatively you can install all the environments separately with:<br/>
 "npm run install:server" for server dependencies.<br/>
 <br/>
 To start the development script simply open a terminal and type:<br/>
-"npm start" to start the development -server, and client.<br/>
+"npm start" to start the development server, and client.<br/>
 <br/>
 alternatively you can start only the server or the client by running:<br/>
 "npm run start:server" or "npm run start:client" respectively.<br/>
