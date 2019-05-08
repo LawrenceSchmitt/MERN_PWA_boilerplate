@@ -7,11 +7,15 @@ module.exports = {
   entry: Paths.client,
   output: {
     path: Paths.clientDist,
-    filename: "client.bundle.js"
+    filename: "client.bundle.js",
+    publicPath: "/"
   },
   devtool: "source-map",
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".json", ".jsx"]
+  },
+  devServer: {
+    historyApiFallback: true
   },
   module: {
     rules: [
@@ -50,7 +54,7 @@ module.exports = {
       host: "localhost",
       open: false,
       port: 3000,
-      server: { baseDir: ["dist/client"] }
+      server: { baseDir: ["dist/client/"] }
     })
   ],
 

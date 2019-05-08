@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, HashRouter, Switch, Route } from "react-router-dom";
 
 // Pages
 import Home from "./Pages/Home";
@@ -41,20 +41,36 @@ const App: React.SFC<AppProps> = () => {
         );
     }
   };
-  return (
-    <BrowserRouter>
-      {SWstate === "" ? null : SWpopUp(SWstate)}
-      {navigator.onLine ? null : (
-        <React.Suspense fallback={"...loading"}>
-          <OnNoInternet />
-        </React.Suspense>
-      )}
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/test" component={Test} />
-      </Switch>
-    </BrowserRouter>
-  );
+  const toReturn = () => {
+    return process.env.NODE_ENV === "production" ? (
+      <BrowserRouter>
+        {SWstate === "" ? null : SWpopUp(SWstate)}
+        {navigator.onLine ? null : (
+          <React.Suspense fallback={"...loading"}>
+            <OnNoInternet />
+          </React.Suspense>
+        )}
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/test" component={Test} />
+        </Switch>
+      </BrowserRouter>
+    ) : (
+      <HashRouter>
+        {SWstate === "" ? null : SWpopUp(SWstate)}
+        {navigator.onLine ? null : (
+          <React.Suspense fallback={"...loading"}>
+            <OnNoInternet />
+          </React.Suspense>
+        )}
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/test" component={Test} />
+        </Switch>
+      </HashRouter>
+    );
+  };
+  return toReturn();
 };
 
 export default App;

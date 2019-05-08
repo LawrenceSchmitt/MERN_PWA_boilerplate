@@ -72,15 +72,23 @@ if (process.env.NODE_ENV === "production") {
       orderPreference: ["br", "gz"]
     })
   );
-  //   app.get("/sw.js", (req, res) => {
-  //     res.sendFile(path.resolve(__dirname, "client/", "sw.js"));
-  //   });
   app.get("/*", (req, res) => {
     res.sendFile(path.resolve("client/", "index.html"), (err: string) => {
       if (err) {
         res.status(500).send(err);
       }
     });
+  });
+} else {
+  app.get("/*", (req, res) => {
+    res.sendFile(
+      path.join(__dirname, "../dist/client/index.html"),
+      (err: string) => {
+        if (err) {
+          res.status(500).send(err);
+        }
+      }
+    );
   });
 }
 
