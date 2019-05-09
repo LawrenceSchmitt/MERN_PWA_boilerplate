@@ -41,10 +41,11 @@ Alternatively you can install all the environments separately with:<br/>
 <code>"npm run install:server"</code> for server dependencies.<br/>
 <h3>Start development environments</h3>
 To start the development script simply open a terminal and type:<br/>
-<code>"npm start"</code> to start the development server, and client.<br/>
+<code>"npm run dev"</code> to start the development server, and client.<br/>
+Now go to "http://localhost:3000"
 <br/>
 Alternatively you can start only the server or the client by running:<br/>
-<code>"npm run start:server"</code> or <code>"npm run start:client"</code> respectively.<br/>
+<code>"npm run dev:server"</code> or <code>"npm run dev:client"</code> respectively.<br/>
 <h3>Build the project for production</h3>
 To build the project you can run the build script by:<br/>
 <code>"npm run build"</code> to build the server and client.<br/>

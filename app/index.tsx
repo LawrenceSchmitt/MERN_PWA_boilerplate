@@ -1,17 +1,24 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { BrowserRouter, HashRouter } from "react-router-dom";
 import { GlobalStyles } from "./Theme/GlobalStyles";
 import App from "./App";
 import { register } from "./serviceWorker";
 
 const element = document.getElementById("app");
 
-const app = (
-  <React.Fragment>
-    <GlobalStyles />
-    <App />
-  </React.Fragment>
-);
+const app =
+  process.env.NODE_ENV === "production" ? (
+    <BrowserRouter>
+      <GlobalStyles />
+      <App />
+    </BrowserRouter>
+  ) : (
+    <HashRouter>
+      <GlobalStyles />
+      <App />
+    </HashRouter>
+  );
 
 ReactDOM.render(app, element);
 

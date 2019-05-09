@@ -18,30 +18,17 @@ const SWpopUps = LoadedComponent(() =>
 export interface AppProps {}
 
 const App: React.SFC<AppProps> = () => {
-  const toReturn = () => {
-    return process.env.NODE_ENV === "production" ? (
-      <BrowserRouter>
-        <SWContextProvider>
-          <SWpopUps />
-        </SWContextProvider>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/test" component={Test} />
-        </Switch>
-      </BrowserRouter>
-    ) : (
-      <HashRouter>
-        <SWContextProvider>
-          <SWpopUps />
-        </SWContextProvider>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/test" component={Test} />
-        </Switch>
-      </HashRouter>
-    );
-  };
-  return toReturn();
+  return (
+    <React.Fragment>
+      <SWContextProvider>
+        <SWpopUps />
+      </SWContextProvider>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/test" component={Test} />
+      </Switch>
+    </React.Fragment>
+  );
 };
 
 export default App;
