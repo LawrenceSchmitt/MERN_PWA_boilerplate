@@ -4,13 +4,11 @@ import { Link } from "react-router-dom";
 
 import LazyComponent from "../../Components/LazyComponent";
 
-// subComponents
-import Loading from "../../Components/Loading";
+import WithImages from "../../Components/WithImages";
 
-const LazyTestComponent = Loadable({
-  loader: () => import("../../Components/LazyTestComponent"),
-  loading: Loading
-});
+const LazytestComponent = React.lazy(() =>
+  import("../../Components/LazyTestComponent")
+);
 
 export interface HomeProps {}
 
@@ -26,7 +24,11 @@ const Home: React.SFC<HomeProps> = () => {
       standard popups
       <br />
       <button onClick={toggleLazy}>show LazyComponent</button>
-      {show ? <LazyTestComponent /> : null}
+      {show && (
+        <LazyComponent>
+          <LazytestComponent />
+        </LazyComponent>
+      )}
     </div>
   );
 };

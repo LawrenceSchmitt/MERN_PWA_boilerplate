@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { BrowserRouter, HashRouter, Switch, Route } from "react-router-dom";
 
-import LoadedComponent from "./Components/LoadedComponent";
+import LazyComponent from "./Components/LazyComponent";
 
 // contexts
 import SWContextProvider from "./contexts/Providers/SWContextProvider";
@@ -12,23 +12,23 @@ const Home = React.lazy(() => import("./Pages/Home"));
 const StandardPopUps = React.lazy(() => import("./Pages/StandardPopUps"));
 
 // components
-const SWpopUps = LoadedComponent(() =>
-  import("./Components/ServiceWorker_PopUps")
-);
+const SWpopUps = React.lazy(() => import("./Components/ServiceWorker_PopUps"));
 export interface AppProps {}
 
 const App: React.SFC<AppProps> = () => {
   return (
     <React.Fragment>
       <SWContextProvider>
-        <SWpopUps />
+        <LazyComponent>
+          <SWpopUps />
+        </LazyComponent>
       </SWContextProvider>
-      <React.Suspense fallback={<div>LOADING</div>}>
+      <LazyComponent>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/popups" component={StandardPopUps} />
         </Switch>
-      </React.Suspense>
+      </LazyComponent>
     </React.Fragment>
   );
 };

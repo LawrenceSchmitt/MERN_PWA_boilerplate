@@ -1,14 +1,15 @@
 import * as React from "react";
 
 import styled from "styled-components";
-import LoadedComponent from "../LoadedComponent";
 
 // context
 import { SWContext } from "../../contexts/contexts";
 
-const OnSWupdate = LoadedComponent(() => import("./OnUpdate"));
-const OnSWsuccess = LoadedComponent(() => import("./OnSuccess"));
-const OnNoInternet = LoadedComponent(() => import("./OnNoInternet"));
+import LazyComponent from "../LazyComponent";
+
+const OnSWupdate = React.lazy(() => import("./OnUpdate"));
+const OnSWsuccess = React.lazy(() => import("./OnSuccess"));
+const OnNoInternet = React.lazy(() => import("./OnNoInternet"));
 
 const types = {
   updated: <OnSWupdate />,
@@ -33,7 +34,11 @@ const SWpopUps: React.SFC<SWpopUpsProps> = () => {
     z-index: 999;
     top: 0;
   `;
-  return <SWPopUpWrapper>{handleSWPopUps()}</SWPopUpWrapper>;
+  return (
+    <SWPopUpWrapper>
+      <LazyComponent>{handleSWPopUps()}</LazyComponent>
+    </SWPopUpWrapper>
+  );
 };
 
 export default SWpopUps;

@@ -1,13 +1,12 @@
 import * as React from "react";
-import * as Loadable from "react-loadable";
-
 import Loading from "./Loading";
 
-const LazyComponent = component => {
-  return Loadable({
-    loader: () => import(component),
-    loading: Loading
-  });
+export interface WithSuspenseProps {}
+
+const WithSuspense: React.SFC<WithSuspenseProps> = props => {
+  return (
+    <React.Suspense fallback={<Loading />}>{props.children}</React.Suspense>
+  );
 };
 
-export default LazyComponent;
+export default WithSuspense;
