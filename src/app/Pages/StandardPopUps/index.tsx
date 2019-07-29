@@ -4,7 +4,9 @@ import styled from "styled-components";
 export interface StandardPopUpsProps {}
 
 // popups
-import OnUpdate from "../../Components/ServiceWorker_PopUps/OnUpdate";
+const OnUpdate = React.lazy(() =>
+  import("../../Components/ServiceWorker_PopUps/OnUpdate")
+);
 import OnSuccess from "../../Components/ServiceWorker_PopUps/OnSuccess";
 import OnNoInternet from "../../Components/ServiceWorker_PopUps/OnNoInternet";
 
@@ -30,7 +32,11 @@ const StandardPopUps: React.SFC<StandardPopUpsProps> = () => {
   const handlepopUps = type => {
     switch (type) {
       case "Update":
-        return <OnUpdate />;
+        return (
+          <React.Suspense fallback={<div>LOADING</div>}>
+            <OnUpdate />
+          </React.Suspense>
+        );
       case "Success":
         return <OnSuccess />;
       case "NoInternet":

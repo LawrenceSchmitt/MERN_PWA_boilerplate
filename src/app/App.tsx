@@ -8,8 +8,8 @@ import LoadedComponent from "./Components/LoadedComponent";
 import SWContextProvider from "./contexts/Providers/SWContextProvider";
 
 // Pages
-import Home from "./Pages/Home";
-import StandardPopUps from "./Pages/StandardPopUps";
+const Home = React.lazy(() => import("./Pages/Home"));
+const StandardPopUps = React.lazy(() => import("./Pages/StandardPopUps"));
 
 // components
 const SWpopUps = LoadedComponent(() =>
@@ -23,10 +23,12 @@ const App: React.SFC<AppProps> = () => {
       <SWContextProvider>
         <SWpopUps />
       </SWContextProvider>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/popups" component={StandardPopUps} />
-      </Switch>
+      <React.Suspense fallback={<div>LOADING</div>}>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/popups" component={StandardPopUps} />
+        </Switch>
+      </React.Suspense>
     </React.Fragment>
   );
 };

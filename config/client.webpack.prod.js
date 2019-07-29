@@ -7,12 +7,14 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const BrotliPlugin = require("brotli-webpack-plugin");
 const AppManifestWebpackPlugin = require("app-manifest-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
+const {
+  ReactLoadablePlugin
+} = require("@jahredhope/react-loadable-webpack-plugin");
 
 module.exports = {
   entry: { client: Paths.client, sw: Paths.SW },
   output: {
-    path: Paths.clientDist,
-    filename: "[name].bundle.js"
+    path: Paths.clientDist
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".json", ".jsx"]
@@ -45,6 +47,9 @@ module.exports = {
   },
   mode: "production",
   plugins: [
+    new ReactLoadablePlugin({
+      filename: "react-loadable.json"
+    }),
     new WebpackCleanupPlugin(),
     new HtmlWebpackPlugin({
       template: Paths.HTMLTemplate,

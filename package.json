@@ -34,6 +34,7 @@
   "author": "Vindao (Vincent Schmitt)",
   "license": "ISC",
   "devDependencies": {
+    "@jahredhope/react-loadable-webpack-plugin": "^1.0.1",
     "app-manifest-webpack-plugin": "^1.2.0",
     "brotli-webpack-plugin": "^1.1.0",
     "browser-sync": "^2.26.5",
