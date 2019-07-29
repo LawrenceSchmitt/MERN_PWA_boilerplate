@@ -26,6 +26,10 @@ const PopUp: React.SFC<PopUpProps> = props => {
   // style
 
   const PopUpDiv = styled.div`
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
     width: 100vw;
     text-align: center;
     background-color: transparent;

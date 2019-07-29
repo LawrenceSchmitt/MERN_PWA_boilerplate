@@ -9,7 +9,7 @@ import SWContextProvider from "./contexts/Providers/SWContextProvider";
 
 // Pages
 import Home from "./Pages/Home";
-import Test from "./Pages/Test";
+import StandardPopUps from "./Pages/StandardPopUps";
 
 // components
 const SWpopUps = LoadedComponent(() =>
@@ -25,7 +25,7 @@ const App: React.SFC<AppProps> = () => {
       </SWContextProvider>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/test" component={Test} />
+        <Route exact path="/popups" component={StandardPopUps} />
       </Switch>
     </React.Fragment>
   );

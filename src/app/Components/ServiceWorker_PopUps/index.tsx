@@ -28,7 +28,6 @@ const SWpopUps: React.SFC<SWpopUpsProps> = () => {
     }
     return null;
   };
-  console.log(context);
   const SWPopUpWrapper = styled.div`
     position: absolute;
     z-index: 999;

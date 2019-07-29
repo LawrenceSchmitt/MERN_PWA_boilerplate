@@ -12,7 +12,8 @@ const Home: React.SFC<HomeProps> = () => {
   return (
     <div id="Home">
       <Img src={[BackgroundImage]} alt="Test Image" />
-      <Link to="/test">Test</Link> This is a test page
+      <Link to="/popups">popups</Link> This is a page to check and edit the
+      standard popups
     </div>
   );
 };
