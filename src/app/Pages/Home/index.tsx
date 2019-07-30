@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 import LazyComponent from "../../Components/HelperComponents/LazyComponent";
 
-const LazytestComponent = React.lazy(() =>
-  import("../../Components/LazyTestComponent")
+const TestComponent = React.lazy(() =>
+  import("../../Components/TestComponent")
 );
 
 export interface HomeProps {}
@@ -23,7 +23,7 @@ const Home: React.SFC<HomeProps> = () => {
       <button onClick={toggleLazy}>show LazyComponent</button>
       {show && (
         <LazyComponent>
-          <LazytestComponent />
+          <TestComponent />
         </LazyComponent>
       )}
     </div>

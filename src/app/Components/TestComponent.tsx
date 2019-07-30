@@ -1,12 +1,12 @@
 import * as React from "react";
 
-import WithImages from "./WithImages";
+import WithImages from "./HelperComponents/WithImages";
 
-export interface LazyTestComponentProps {}
+export interface TestComponentProps {}
 
 const Stars = require("./assets/large-starts.jpg");
 
-const LazyTestComponent: React.SFC<LazyTestComponentProps> = () => {
+const TestComponent: React.SFC<TestComponentProps> = () => {
   return (
     <div>
       <WithImages images={[Stars]}>
@@ -16,4 +16,4 @@ const LazyTestComponent: React.SFC<LazyTestComponentProps> = () => {
   );
 };
 
-export default LazyTestComponent;
+export default TestComponent;
