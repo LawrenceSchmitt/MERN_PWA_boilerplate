@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { BrowserRouter, HashRouter, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 import LazyComponent from "./Components/HelperComponents/LazyComponent";
 
