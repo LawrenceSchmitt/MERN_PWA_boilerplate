@@ -5,7 +5,7 @@ import styled from "styled-components";
 // context
 import { SWContext } from "../../contexts/contexts";
 
-import LazyComponent from "../LazyComponent";
+import LazyComponent from "../HelperComponents/LazyComponent";
 
 const OnSWupdate = React.lazy(() => import("./OnUpdate"));
 const OnSWsuccess = React.lazy(() => import("./OnSuccess"));

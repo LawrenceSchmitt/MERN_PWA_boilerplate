@@ -15,3 +15,13 @@ export const LoadImages = (images: string[]) => {
   }
   return loaded;
 };
+
+export const useTimer = (duration: number) => {
+  const [done, setDone] = React.useState(false);
+  React.useEffect(() => {
+    setTimeout(() => {
+      setDone(true);
+    }, duration);
+  }, []);
+  return done;
+};

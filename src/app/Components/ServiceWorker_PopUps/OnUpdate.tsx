@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import PopUp from "../PopUp";
+import PopUp from "./ServiceWorker_PopUp";
 
 const OnSWUpdatePopUp = () => {
   return (

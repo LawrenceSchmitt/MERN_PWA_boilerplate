@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { BrowserRouter, HashRouter, Switch, Route } from "react-router-dom";
 
-import LazyComponent from "./Components/LazyComponent";
+import LazyComponent from "./Components/HelperComponents/LazyComponent";
 
 // contexts
 import SWContextProvider from "./contexts/Providers/SWContextProvider";
