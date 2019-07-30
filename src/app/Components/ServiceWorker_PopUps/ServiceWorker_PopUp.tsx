@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { useTransition, animated } from "react-spring";
 import { ColorProperty } from "csstype";
 
-import { useTimer } from "../../Hooks";
+import Theme from "../../Theme/SWTheme";
 
 export interface ServiceWorker_PopUpProps {
   text: string;
@@ -19,7 +19,7 @@ interface WrapperProps {
 
 const Wrapper = styled.div`
   background-color: "transparent";
-  color: ${(p: WrapperProps) => p.color || "black"};
+  color: ${(p: WrapperProps) => p.color || Theme.color};
   position: absolute;
   left: 0;
   right: 0;
@@ -33,8 +33,9 @@ interface ContentProps {
 }
 
 const Content = styled.div`
-  padding: 1em;
-  background-color: ${(p: ContentProps) => p.backgroundColor || "lightgrey"};
+  padding: ${Theme.contentPadding};
+  background-color: ${(p: ContentProps) =>
+    p.backgroundColor || Theme.backgroundColor};
 `;
 
 interface CloseDivProps {
@@ -49,7 +50,8 @@ const CloseDiv = styled.div`
   cursor: pointer;
   margin: 0 auto;
   font-size: 1.5em;
-  background-color: ${(p: CloseDivProps) => p.backgroundColor || "lightgrey"};
+  background-color: ${(p: CloseDivProps) =>
+    p.backgroundColor || Theme.backgroundColor};
 `;
 
 const ServiceWorker_PopUp: React.SFC<ServiceWorker_PopUpProps> = props => {
