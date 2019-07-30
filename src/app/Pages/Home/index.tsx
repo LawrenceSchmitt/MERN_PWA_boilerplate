@@ -1,10 +1,7 @@
 import * as React from "react";
-import * as Loadable from "react-loadable";
 import { Link } from "react-router-dom";
 
-import LazyComponent from "../../Components/LazyComponent";
-
-import WithImages from "../../Components/WithImages";
+import LazyComponent from "../../Components/HelperComponents/LazyComponent";
 
 const LazytestComponent = React.lazy(() =>
   import("../../Components/LazyTestComponent")
@@ -21,7 +18,7 @@ const Home: React.SFC<HomeProps> = () => {
   return (
     <div id="Home">
       <Link to="/popups">popups</Link> This is a page to check and edit the
-      standard popups
+      service-worker-popups
       <br />
       <button onClick={toggleLazy}>show LazyComponent</button>
       {show && (

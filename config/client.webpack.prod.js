@@ -1,15 +1,11 @@
 const Paths = require("./Paths");
 
 const ImageminPlugin = require("imagemin-webpack-plugin").default;
-const ImageminWebpWebpackPlugin = require("imagemin-webp-webpack-plugin");
 const WebpackCleanupPlugin = require("webpack-cleanup-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const BrotliPlugin = require("brotli-webpack-plugin");
 const AppManifestWebpackPlugin = require("app-manifest-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
-const {
-  ReactLoadablePlugin
-} = require("@jahredhope/react-loadable-webpack-plugin");
 
 module.exports = {
   entry: { client: Paths.client, sw: Paths.SW },
@@ -47,9 +43,6 @@ module.exports = {
   },
   mode: "production",
   plugins: [
-    new ReactLoadablePlugin({
-      filename: "react-loadable.json"
-    }),
     new WebpackCleanupPlugin(),
     new HtmlWebpackPlugin({
       template: Paths.HTMLTemplate,
@@ -81,7 +74,7 @@ module.exports = {
         developerName: "Vindao (Vincent Schmitt)"
       }
     }),
-    new ImageminWebpWebpackPlugin({
+    new ImageminPlugin({
       mozjpeg: {
         progressive: true,
         quality: 65

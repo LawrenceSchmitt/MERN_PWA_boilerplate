@@ -1,10 +1,10 @@
 import * as React from "react";
 
 // Hooks
-import { LoadImages } from "../Hooks";
+import { LoadImages } from "../../Hooks";
 
 //subComponents
-import Loading from "./Loading";
+import Loading from "../Loading";
 
 export interface WithImagesProps {
   images: string[];
