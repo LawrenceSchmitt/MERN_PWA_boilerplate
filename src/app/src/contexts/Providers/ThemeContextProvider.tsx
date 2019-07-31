@@ -13,13 +13,12 @@ const ThemeContextProvider: React.SFC<ThemeContextProviderProps> = props => {
 
   const updateTheme = (newTheme: number) => {
     if (Themes[newTheme]) {
-      setTheme(Themes[newTheme]);
+      setTheme(newTheme);
     }
   };
-  const current = Themes[Theme];
   return (
     <ThemeContext.Provider
-      value={{ Nav: current.Nav, updateTheme: updateTheme }}
+      value={{ Styles: Themes[Theme], updateTheme: updateTheme, Theme: Theme }}
     >
       {props.children}
     </ThemeContext.Provider>

@@ -6,6 +6,7 @@ import LazyComponent from "./Components/HelperComponents/LazyComponent";
 
 // contexts
 import SWContextProvider from "./contexts/Providers/SWContextProvider";
+import ThemeContextProvider from "./contexts/Providers/ThemeContextProvider";
 
 // subComponents
 import Nav from "./Components/Nav";
@@ -26,13 +27,15 @@ const App: React.SFC<AppProps> = () => {
           <SWpopUps />
         </LazyComponent>
       </SWContextProvider>
-      <Nav />
-      <LazyComponent>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/popups" component={StandardPopUps} />
-        </Switch>
-      </LazyComponent>
+      <ThemeContextProvider>
+        <Nav />
+        <LazyComponent>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/popups" component={StandardPopUps} />
+          </Switch>
+        </LazyComponent>
+      </ThemeContextProvider>
     </React.Fragment>
   );
 };
