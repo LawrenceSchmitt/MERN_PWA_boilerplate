@@ -55,10 +55,7 @@ img {
 }
 /* Links */
 a {
-  text-decoration: underline;
+  text-decoration: none;
   color: inherit;
-&.active {
-    text-decoration: none;
-  }
 }
 `;

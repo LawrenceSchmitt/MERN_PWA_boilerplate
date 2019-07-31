@@ -1,8 +1,8 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { BrowserRouter, HashRouter } from "react-router-dom";
-import { GlobalStyles } from "./Theme/GlobalStyles";
-import App from "./App";
+import { GlobalStyles } from "./src/Theme/GlobalStyles";
+import App from "./src/App";
 import { register } from "./serviceWorker";
 
 const element = document.getElementById("app");

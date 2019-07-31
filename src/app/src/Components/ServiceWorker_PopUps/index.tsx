@@ -34,11 +34,7 @@ const SWpopUps: React.SFC<SWpopUpsProps> = () => {
     z-index: 999;
     top: 0;
   `;
-  return (
-    <SWPopUpWrapper>
-      <LazyComponent>{handleSWPopUps()}</LazyComponent>
-    </SWPopUpWrapper>
-  );
+  return <SWPopUpWrapper>{handleSWPopUps()}</SWPopUpWrapper>;
 };
 
 export default SWpopUps;

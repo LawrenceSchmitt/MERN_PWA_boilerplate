@@ -1,6 +1,11 @@
 import * as React from "react";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+// assets
+const ReactLogo = require("./assets/react.svg");
+
+// subComponents
 import LazyComponent from "../../Components/HelperComponents/LazyComponent";
 
 const TestComponent = React.lazy(() =>
@@ -8,6 +13,12 @@ const TestComponent = React.lazy(() =>
 );
 
 export interface HomeProps {}
+
+const Logo = styled.img`
+  width: 10vw;
+  height: 10vh;
+  margin: 0 auto;
+`;
 
 const Home: React.SFC<HomeProps> = () => {
   const [show, setShow] = React.useState(false);
@@ -17,6 +28,7 @@ const Home: React.SFC<HomeProps> = () => {
   };
   return (
     <div id="Home">
+      <Logo src={ReactLogo} alt="React Logo" />
       <Link to="/popups">popups</Link> This is a page to check and edit the
       service-worker-popups
       <br />

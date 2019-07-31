@@ -7,6 +7,9 @@ import LazyComponent from "./Components/HelperComponents/LazyComponent";
 // contexts
 import SWContextProvider from "./contexts/Providers/SWContextProvider";
 
+// subComponents
+import Nav from "./Components/Nav";
+
 // Pages
 const Home = React.lazy(() => import("./Pages/Home"));
 const StandardPopUps = React.lazy(() => import("./Pages/StandardPopUps"));
@@ -23,6 +26,7 @@ const App: React.SFC<AppProps> = () => {
           <SWpopUps />
         </LazyComponent>
       </SWContextProvider>
+      <Nav />
       <LazyComponent>
         <Switch>
           <Route exact path="/" component={Home} />

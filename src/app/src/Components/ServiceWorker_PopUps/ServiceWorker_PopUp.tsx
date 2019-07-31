@@ -74,30 +74,32 @@ const ServiceWorker_PopUp: React.SFC<ServiceWorker_PopUpProps> = props => {
     setShow(false);
   };
   return (
-    <React.Fragment>
+    <Wrapper color={props.color}>
       {transitions.map(transition => {
         return (
           transition.item && (
             <animated.div
               key={transition.key}
-              style={{ ...transition.props, transformOrigin: "top" }}
+              style={{
+                ...transition.props,
+                transformOrigin: "top",
+                width: "100%"
+              }}
             >
-              <Wrapper color={props.color}>
-                <Content backgroundColor={props.backgroundColor}>
-                  {props.text}
-                </Content>
-                <CloseDiv
-                  onClick={handleClose}
-                  backgroundColor={props.backgroundColor}
-                >
-                  &times;
-                </CloseDiv>
-              </Wrapper>
+              <Content backgroundColor={props.backgroundColor}>
+                {props.text}
+              </Content>
+              <CloseDiv
+                onClick={handleClose}
+                backgroundColor={props.backgroundColor}
+              >
+                &times;
+              </CloseDiv>
             </animated.div>
           )
         );
       })}
-    </React.Fragment>
+    </Wrapper>
   );
 };
 
