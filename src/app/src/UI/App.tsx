@@ -5,15 +5,15 @@ import { Switch, Route } from "react-router-dom";
 import LazyComponent from "./Components/HelperComponents/LazyComponent";
 
 // contexts
-import SWContextProvider from "./contexts/Providers/SWContextProvider";
-import ThemeContextProvider from "./contexts/Providers/ThemeContextProvider";
+import SWContextProvider from "../contexts/SWContext";
+import ThemeContextProvider from "../contexts/ThemeContext";
 
 // subComponents
 import Nav from "./Components/Nav";
 
 // Pages
-const Home = React.lazy(() => import("./Pages/Home"));
-const StandardPopUps = React.lazy(() => import("./Pages/StandardPopUps"));
+const UI = React.lazy(() => import("./Pages/UI"));
+const StandardPopUps = React.lazy(() => import("./Pages/Admin"));
 
 // components
 const SWpopUps = React.lazy(() => import("./Components/ServiceWorker_PopUps"));
@@ -31,7 +31,7 @@ const App: React.SFC<AppProps> = () => {
         <Nav />
         <LazyComponent>
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" component={UI} />
             <Route exact path="/popups" component={StandardPopUps} />
           </Switch>
         </LazyComponent>

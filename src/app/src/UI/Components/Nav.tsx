@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 // context
-import { ThemeContext } from "../contexts/contexts";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 export interface NavProps {}
 

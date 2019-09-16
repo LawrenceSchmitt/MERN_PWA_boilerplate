@@ -52,5 +52,8 @@
     "webpack": "^4.30.0",
     "webpack-cleanup-plugin": "^0.5.1",
     "webpack-cli": "^3.3.1"
+  },
+  "dependencies": {
+    "is-online": "^8.2.0"
   }
 }

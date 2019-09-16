@@ -1,11 +1,12 @@
 import * as React from "react";
 
-// context
-import { ThemeContext } from "../contexts";
+import Themes from "../UI/Theme/Theme";
 
-// Theme
-import Themes from "../../Theme/Theme";
-
+export const ThemeContext = React.createContext({
+  Theme: 0,
+  Styles: Themes[0],
+  updateTheme: (newTheme: number) => {}
+});
 export interface ThemeContextProviderProps {}
 
 const ThemeContextProvider: React.SFC<ThemeContextProviderProps> = props => {

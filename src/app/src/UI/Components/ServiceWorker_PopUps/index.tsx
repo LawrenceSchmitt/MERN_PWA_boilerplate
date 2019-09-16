@@ -3,7 +3,7 @@ import * as React from "react";
 import styled from "styled-components";
 
 // context
-import { SWContext } from "../../contexts/contexts";
+import { SWContext } from "../../../contexts/SWContext";
 
 import LazyComponent from "../HelperComponents/LazyComponent";
 

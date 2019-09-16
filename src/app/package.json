@@ -8,6 +8,7 @@
   "license": "ISC",
   "dependencies": {
     "@types/react-loadable": "^5.5.1",
+    "chess": "^0.4.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
