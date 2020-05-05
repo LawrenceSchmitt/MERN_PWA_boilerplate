@@ -1,5 +1,5 @@
-import * as React from "react";
-import isOnline from "is-online";
+import * as React from 'react';
+import isOnline from 'is-online';
 
 export const SWContext = React.createContext({});
 
@@ -18,14 +18,14 @@ const SWContextProvider: React.SFC<SWContextProviderProps> = () => {
   const [Success, setSuccess] = React.useState(false);
   const [Update, setUpdate] = React.useState(false);
 
-  const handleSW = e => {
+  const handleSW = (e) => {
     console.log(e.detail);
   };
   React.useEffect(() => {
-    window.addEventListener("serviceWorker", handleSW, true);
+    window.addEventListener('serviceWorker', handleSW, true);
 
     return () => {
-      window.removeEventListener("serviceWorker", handleSW, true);
+      window.removeEventListener('serviceWorker', handleSW, true);
     };
   });
 
@@ -36,10 +36,8 @@ const SWContextProvider: React.SFC<SWContextProviderProps> = () => {
   }, [Online]);
 
   return (
-    <SWContext.Provider
-      value={{ online: Online, success: Success, update: Update }}
-    >
-      {this.props.children}
+    <SWContext.Provider value={{ online: Online, success: Success, update: Update }}>
+      {this.children}
     </SWContext.Provider>
   );
 };
